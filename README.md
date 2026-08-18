@@ -10,7 +10,8 @@ Built in Python with OpenCV as a university assignment for *Image Processing and
 
 Point a webcam at yourself and the app detects your hands and head in real time, overlaying virtual balls you can bat around the screen. Collisions are calculated continuously, touch a ball with your palm and it responds differently than a fingertip tap. An audio cue fires on every hit.
 
-The whole thing runs at 30 FPS on standard hardware, frame-by-frame, with no pre-recorded background or calibration step required.
+![Screenshots demonstrating the app](screenshots/final_product.jpg)
+
 
 ---
 
@@ -22,10 +23,15 @@ The hard part of this project isn't the game, it's reliably isolating a human bo
 
 **Head detection** uses a Haar Cascade classifier, the same family of algorithms that powered early face detection in digital cameras , which runs fast enough to not blow the frame budget.
 
-**Hand classification** is based on contour geometry. Once a skin blob is found, the algorithm measures how "spiky" its outline is. An open hand has a perimeter roughly twice what you'd expect for a compact shape of the same area , that ratio is what separates hands from faces, arms, or background noise. Finger gaps are confirmed by checking the angles of indentations in the contour's convex hull.
+![Skin Detection Masks](screenshots/detectionwith-mask-grid.jpg)   
+
+**Hand classification** is based on contour geometry. Once a skin blob is found, the algorithm measures how "spiky" its outline is. An open hand has a perimeter roughly twice what you'd expect for a compact shape of the same area, that ratio is what separates hands from faces, arms, or background noise. Finger gaps are confirmed by checking the angles of indentations in the contour's convex hull.
 
 **Motion vectors** are calculated by tracking each hand's centroid between consecutive frames and matching them by nearest-neighbour. Any jump larger than 150px between frames gets discarded as a segmentation glitch rather than real movement.
 
+![Motion Vectors](screenshots/vector-movements.jpg)
+
+![Motion Vectors](screenshots/vector-movements_2.jpg)
 ---
 
 ## Tech Stack
